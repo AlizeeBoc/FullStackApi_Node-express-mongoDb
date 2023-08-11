@@ -24,7 +24,6 @@ app.use(express.json())
 app.use(bodyParser.json()) // plus facile pour les requetes post
 
 app.use("/", indexRouter)
-//app.use('/players', playerRouter)
 app.use("/players", playerRouter)
 
 ////2. Routes de base

@@ -4,23 +4,24 @@ import express from "express"
 const router = express()
 import Player from "../models/Player.mjs"
 
-// GET players
+// All players Route
 router.get("/", async (req, res) => {
     try {
         const players = await Player.find()
-        res.json(players)
+        //res.json(players)
+         res.render('players/index')
     } catch (err) {
        res.json({  message : err})
     }
 })
 
-// GET specific player by id
+// Get player by id Route
 router.get("/:id", async (req, res) => {
     const playerId = req.params.id
     try {
         const player = await Player.find({playerId : playerId})
-        res.json(player)
-        //res.render("index")
+        //res.json(player)
+        res.render("players/player")
     } catch (err) {
         res.json ({ message : err})
     }
@@ -28,7 +29,7 @@ router.get("/:id", async (req, res) => {
 
 
 
-// POST => create a new player
+// POST => create a new player Route
 router.post('/', async (req, res) => {
     const player = new Player({
         playerId : req.body.playerId,
