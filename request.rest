@@ -1,3 +1,10 @@
+### gGET all players
+GET http://localhost:3000/posts
+
+### GET a specific player based on his playerId
+GET http://localhost:3000/posts/231747
+
+### Create a player
 POST http://localhost:3000/posts
 Content-Type: application/json
 
@@ -8,3 +15,15 @@ Content-Type: application/json
         "club" : "testytest",
         "overallRating" : "123"
 }
+
+### DELETE a specific player based on his playerId
+DELETE http://localhost:3000/posts/1234
+
+
+### Update a specific player based on his playerId
+PATCH http://localhost:3000/posts/1234
+Content-Type: application/json
+
+ {
+    "name" : "newName!"
+ }
