@@ -15,13 +15,20 @@ router.get("/", async (req, res) => {
     }
 })
 
-// Get player by id Route
+
+// new player Route ????
+router.get('/new', (req, res) => {
+    //res.json('hello')
+    res.render('players/new', { player : new Player()})
+})
+
+// Get player by id Route // ok json
 router.get("/:id", async (req, res) => {
     const playerId = req.params.id
     try {
         const player = await Player.find({playerId : playerId})
-        //res.json(player)
-        res.render("players/player")
+        res.json(player)
+        //res.render("players/player")
     } catch (err) {
         res.json ({ message : err})
     }
@@ -41,6 +48,7 @@ router.post('/', async (req, res) => {
     try {
         const playerSaved = await player.save()
         res.json(playerSaved)
+        //res.render('player/new', {playerSaved})
         console.log('A new player has been created!');
     } catch (err) {
         res.json({ message : err})
