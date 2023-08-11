@@ -6,6 +6,14 @@ dotenv.config()
 import router from "./routes/players.mjs"
 import bodyParser from "body-parser"
 import cors from "cors"
+import expressLayouts from "express-ejs-layouts"
+
+app.set('view engine', 'ejs')
+app.set('views', '/home/alizee/testApiDb/app.mjs' + './views')
+app.set('layout', "layouts/layout")
+app.use(expressLayouts)
+app.use(express.static('public'))
+
 
 ////Middlewares
 //app.use(auth)
@@ -36,21 +44,36 @@ mongoose
   })
 
 // 1. Create a server
-app.listen(3000)
+app.listen(process.env.PORT || 3000)
 
 /*
 
 npm init -y
 npm install express
-npm install nodemon
+npm install --save-dev nodemon
 npm install mongoose
 npm install dotenv
 npm install body-parser   
 npm install cors
 npm install --save-dev @types/cors
 
+npm i ejs express-ejs-layouts
+
 
 */
 
 ////////////////: BIBLIO ////////////////////
-// https://www.youtube.com/watch?v=vjf774RKrLc
+// BACKEND : https://www.youtube.com/watch?v=vjf774RKrLc
+// FRONT : https://www.youtube.com/watch?v=qj2oDkvc4dQ&list=PLZlA0Gpn_vH8jbFkBjOuFjhxANC63OmXM&index=5
+
+
+////////////////////////////////////////////
+// __dirname in ECMAS : https://stackabuse.com/bytes/fix-dirname-is-not-defined-in-es-module-scope-in-javascript-node/
+//import path from 'path';
+//import url from 'url';
+
+//const __filename = url.fileURLToPath(import.meta.url);
+//const __dirname = path.dirname(__filename);
+
+//console.log(__filename);
+//console.log(__dirname);
