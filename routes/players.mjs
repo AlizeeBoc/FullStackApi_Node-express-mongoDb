@@ -14,21 +14,18 @@ router.get("/", async (req, res) => {
     }
 })
 
-//// GET specific player by id
-//router.get("/:id", async (req, res) => {
-//    const playerId = req.params.id
-//    try {
-//        const player = await Player.find({playerId : playerId})
-//        res.json(player)
-//        //res.render("index")
-//    } catch (err) {
-//        res.json ({ message : err})
-//    }
-//})
-
-router.get("/,", (req, res) => {
-    res.render('index')
+// GET specific player by id
+router.get("/:id", async (req, res) => {
+    const playerId = req.params.id
+    try {
+        const player = await Player.find({playerId : playerId})
+        res.json(player)
+        //res.render("index")
+    } catch (err) {
+        res.json ({ message : err})
+    }
 })
+
 
 
 // POST => create a new player
