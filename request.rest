@@ -1,11 +1,11 @@
 ### gGET all players
-GET http://localhost:3000/posts
+GET http://localhost:3000/players
 
 ### GET a specific player based on his playerId
-GET http://localhost:3000/posts/231747
+GET http://localhost:3000/players/231747
 
 ### Create a player
-POST http://localhost:3000/posts
+POST http://localhost:3000/players
 Content-Type: application/json
 
 {
@@ -17,11 +17,11 @@ Content-Type: application/json
 }
 
 ### DELETE a specific player based on his playerId
-DELETE http://localhost:3000/posts/1234
+DELETE http://localhost:3000/players/1234
 
 
 ### Update a specific player based on his playerId
-PATCH http://localhost:3000/posts/1234
+PATCH http://localhost:3000/players/1234
 Content-Type: application/json
 
  {

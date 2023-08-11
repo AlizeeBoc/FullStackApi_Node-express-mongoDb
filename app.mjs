@@ -3,12 +3,12 @@ const app = express()
 import mongoose from "mongoose"
 import dotenv from "dotenv"
 dotenv.config()
-//import router from "./routes/players.mjs"
 import bodyParser from "body-parser"
 import cors from "cors"
 import expressLayouts from "express-ejs-layouts"
 
 import indexRouter from "./routes/index.mjs"
+import playerRouter from "./routes/players.mjs"
 
 app.set('view engine', 'ejs')
 app.set('views', '/home/alizee/testApiDb/app.mjs' + './views')
@@ -18,16 +18,14 @@ app.use(express.static('public'))
 
 
 ////Middlewares
-//app.use(auth)
-//app.use('/posts', () => {
-//    console.log("This is a middleware running");
-//})
 app.use(cors())
 app.use(express.json())
 app.use(bodyParser.json()) // plus facile pour les requetes post
 
 app.use('/', indexRouter)
-//app.use("/posts", router)
+//app.use('/players', playerRouter)
+app.use("/players", playerRouter)
+
 //2. Routes de base
 app.get("/", (req, res) => {
   res.send("We are on home")

@@ -2,7 +2,7 @@
 
 import express from "express"
 const router = express()
-import Player from "../models/Post.mjs"
+import Player from "../models/Player.mjs"
 
 // GET players
 router.get("/", async (req, res) => {
@@ -20,6 +20,7 @@ router.get("/:id", async (req, res) => {
     try {
         const player = await Player.find({playerId : playerId})
         res.json(player)
+        //res.render("index")
     } catch (err) {
         res.json ({ message : err})
     }

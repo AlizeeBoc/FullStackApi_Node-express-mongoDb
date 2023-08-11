@@ -1,6 +1,8 @@
 import express from "express"
 const router = express()
 
-import playerRouter from "./players.mjs"
+//import playerRouter from "./players.mjs"
 
-router.use('/players', playerRouter)
+//router.use('/players', playerRouter)
+
+export default router
