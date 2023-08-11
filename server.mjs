@@ -1,35 +1,36 @@
 import express from "express"
 const app = express()
-import mongoose from "mongoose"
+
 import dotenv from "dotenv"
 dotenv.config()
+import expressLayouts from "express-ejs-layouts"
+import mongoose from "mongoose"
 import bodyParser from "body-parser"
 import cors from "cors"
-import expressLayouts from "express-ejs-layouts"
+
 
 import indexRouter from "./routes/index.mjs"
 import playerRouter from "./routes/players.mjs"
 
 app.set('view engine', 'ejs')
-app.set('views', '/home/alizee/testApiDb/app.mjs' + './views')
-app.set('layout', "layouts/layout")
+app.set("views", "/home/alizee/testApiDb" + "/views")
+app.set("layout", "layouts/layout")
 app.use(expressLayouts)
-app.use(express.static('public'))
-
+app.use(express.static("public"))
 
 ////Middlewares
 app.use(cors())
 app.use(express.json())
 app.use(bodyParser.json()) // plus facile pour les requetes post
 
-app.use('/', indexRouter)
+app.use("/", indexRouter)
 //app.use('/players', playerRouter)
 app.use("/players", playerRouter)
 
-//2. Routes de base
-app.get("/", (req, res) => {
-  res.send("We are on home")
-})
+////2. Routes de base
+//app.get("/", (req, res) => {
+//  res.send("We are on home")
+//})
 
 //3. Connexion a l'atlas
 mongoose
@@ -66,7 +67,6 @@ npm i ejs express-ejs-layouts
 ////////////////: BIBLIO ////////////////////
 // BACKEND : https://www.youtube.com/watch?v=vjf774RKrLc
 // FRONT : https://www.youtube.com/watch?v=qj2oDkvc4dQ&list=PLZlA0Gpn_vH8jbFkBjOuFjhxANC63OmXM&index=5
-
 
 ////////////////////////////////////////////
 // __dirname in ECMAS : https://stackabuse.com/bytes/fix-dirname-is-not-defined-in-es-module-scope-in-javascript-node/
