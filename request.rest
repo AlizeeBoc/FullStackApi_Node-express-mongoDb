@@ -1,0 +1,10 @@
+POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+        "playerId" : "1234",
+        "name" : "test",
+        "nationality" : "testNatio",
+        "club" : "testytest",
+        "overallRating" : "123"
+}
