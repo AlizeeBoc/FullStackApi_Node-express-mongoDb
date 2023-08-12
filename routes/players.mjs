@@ -36,23 +36,42 @@ router.get("/:id", async (req, res) => {
 
 
 
+//// POST => create a new player Route
+//router.post('/', async (req, res) => {
+//    const player = new Player({
+//        //playerId : req.body.playerId,
+//        name : req.body.name,
+//        //nationality : req.body.nationality,
+//        //club : req.body.club,
+//        //overallRating : req.body.overallRating
+//    })
+//    try {
+//        //const playerSaved = await player.save()
+//        //res.json(playerSaved)
+//        res.send(req.body.name)
+//        console.log('A new player has been created!');
+//    } catch (err) {
+//        res.json({ message : err})
+//    }
+//})
+
+
 // POST => create a new player Route
 router.post('/', async (req, res) => {
     const player = new Player({
-        playerId : req.body.playerId,
         name : req.body.name,
-        nationality : req.body.nationality,
-        club : req.body.club,
-        overallRating : req.body.overallRating
     })
     try {
-        //const playerSaved = await player.save()
-        //res.json(playerSaved)
-        res.send(req.body.name)
+        const newPlayer = await player.save()
+        //res.redirect(`players/$(newAuthor.id)`)
+        res.redirect('players')
         console.log('A new player has been created!');
     } catch (err) {
-        res.json({ message : err})
-    }
+        res.render('players/new', {
+            player : player,
+            errorMessage : 'Error creating Player'
+        })
+    } 
 })
 
 
