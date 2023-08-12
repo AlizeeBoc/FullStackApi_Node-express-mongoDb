@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 })
 
 
-// new player Route ????
+// New player Route ???? // ok
 router.get('/new', (req, res) => {
     //res.json('hello')
     res.render('players/new', { player : new Player()})
@@ -46,9 +46,9 @@ router.post('/', async (req, res) => {
         overallRating : req.body.overallRating
     })
     try {
-        const playerSaved = await player.save()
-        res.json(playerSaved)
-        //res.render('player/new', {playerSaved})
+        //const playerSaved = await player.save()
+        //res.json(playerSaved)
+        res.send(req.body.name)
         console.log('A new player has been created!');
     } catch (err) {
         res.json({ message : err})

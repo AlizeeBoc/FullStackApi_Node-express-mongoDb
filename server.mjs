@@ -5,7 +5,7 @@ import dotenv from "dotenv"
 dotenv.config()
 import expressLayouts from "express-ejs-layouts"
 import mongoose from "mongoose"
-import bodyParser from "body-parser"
+import bodyParser from "body-parser" // to acces the element from the server
 import cors from "cors"
 
 
@@ -21,7 +21,8 @@ app.use(express.static("public"))
 ////Middlewares
 app.use(cors())
 app.use(express.json())
-app.use(bodyParser.json()) // plus facile pour les requetes post
+//app.use(bodyParser.json()) // plus facile pour les requetes post
+app.use(bodyParser.urlencoded({ limit : '10mb', extended : false }))
 
 app.use("/", indexRouter)
 app.use("/players", playerRouter)

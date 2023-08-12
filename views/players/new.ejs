@@ -1,6 +1,11 @@
+<!-- Code renvoyé par la route index.mjs  /new
+    Dans la section body du Layout
+    Pour l'url http://localhost:3000/players/new   -->
+
 <h2>New player</h2>
 
 <form action="/players" method="POST">
+    <%- include('_form_fields') %>
     <a href="/players">Cancel</a>
     <button type = "submit">Create</button>
 </form>
