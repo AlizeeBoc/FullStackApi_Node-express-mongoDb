@@ -2,4 +2,13 @@
     Dans la section body du Layout
     Pour l'url http://localhost:3000/players  -->
 
-All players
+<h2>Search players</h2>
+<form action="/players" method = "GET">
+    <label>Name</label>
+    <input type="text" name = "name" value="<%= searchOptions.name %>" >
+    <button type = "submit">Search</button>
+</form>
+<br>
+<% players.forEach(player => { %>
+    <div><%= player.name %></div>
+<% }) %>

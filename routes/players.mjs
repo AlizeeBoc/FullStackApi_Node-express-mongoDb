@@ -6,12 +6,19 @@ import Player from "../models/Player.mjs"
 
 // All players Route
 router.get("/", async (req, res) => {
+    let searchOptions = {}
+    if (req.query.name != null && req.query.name !== '') {
+        searchOptions.name = new RegExp(req.query.name, 'i') // case insensitive
+    } 
     try {
-        const players = await Player.find()
+        const players = await Player.find(searchOptions) // !!! pas de '{}' !!!
         //res.json(players)
-         res.render('players/index')
-    } catch (err) {
-       res.json({  message : err})
+         res.render('players/index', { 
+            players : players, 
+            searchOptions : req.query 
+        })
+    } catch {
+       res.redirect('/')
     }
 })
 
@@ -22,17 +29,17 @@ router.get('/new', (req, res) => {
     res.render('players/new', { player : new Player()})
 })
 
-// Get player by id Route // ok json
-router.get("/:id", async (req, res) => {
-    const playerId = req.params.id
-    try {
-        const player = await Player.find({playerId : playerId})
-        res.json(player)
-        //res.render("players/player")
-    } catch (err) {
-        res.json ({ message : err})
-    }
-})
+//// Get player by id Route // ok json
+//router.get("/:id", async (req, res) => {
+//    const playerId = req.params.id
+//    try {
+//        const player = await Player.find({playerId : playerId})
+//        res.json(player)
+//        //res.render("players/player")
+//    } catch (err) {
+//        res.json ({ message : err})
+//    }
+//})
 
 
 
