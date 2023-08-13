@@ -10,5 +10,11 @@
 </form>
 <br>
 <% players.forEach(player => { %>
-    <div><%= player.name %></div>
+    <div>
+        <img src="<%= player.playerImg %>" alt="<%= player.name %>'s Profile Picture">
+    </div>
+    <div>Name : <%= player.name %></div>
+    <div>Nationality : <%= player.nationality %></div>
+    <div>Club : <%= player.club %></div>
+    <div>OverallRating : <%= player.overallRating %></div>
 <% }) %>

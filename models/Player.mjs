@@ -1,7 +1,7 @@
 //5.
 
 import mongoose from "mongoose";
-export const profilePictureBasePath = "uploads/playersPictures"
+//export const profilePictureBasePath = "uploads/playersPictures" //inside public folder
 
 const playersSchema = new mongoose.Schema({
     playerId: {
@@ -24,10 +24,10 @@ const playersSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
-    //profilePicture : {
-    //  type : String,
-    //  required : true
-    //}
+    playerImg : {
+      type : String,
+      //required : true
+    }
   })
   
   const Player = mongoose.model("players", playersSchema)
