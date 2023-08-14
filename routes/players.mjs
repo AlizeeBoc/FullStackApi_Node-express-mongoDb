@@ -38,12 +38,15 @@ router.get("/", paginatedResults(Player), async (req, res) => {
     searchOptions.name = new RegExp(req.query.name, "i") // case insensitive
   }
   try {
-    const players = await Player.find(searchOptions) // !!! pas de '{}' !!!
+    //const players = await Player.find(searchOptions) // !!! pas de '{}' !!!
+    const players = res.paginatedResults.results
     //res.json(players)
     console.log(res.paginatedResults)
     res.render("players/index", {
       players: players,
       searchOptions: req.query,
+      previousPage: res.paginatedResults.previous, 
+      nextPage: res.paginatedResults.next,
     })
   } catch {
     res.redirect("/")
