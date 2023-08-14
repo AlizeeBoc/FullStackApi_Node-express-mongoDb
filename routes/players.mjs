@@ -3,6 +3,7 @@
 
 import express from "express"
 const router = express()
+import { paginatedResults } from "../middleware/paginate.mjs"
 //import multer from "multer"
 //import path from "path"
 //import { profilePictureBasePath } from "../models/Player.mjs"
@@ -31,7 +32,7 @@ const renderNewPage = async (res, player, hasError = false) => {
 }
 
 // All players Route
-router.get("/", async (req, res) => {
+router.get("/", paginatedResults(Player), async (req, res) => {
   let searchOptions = {}
   if (req.query.name != null && req.query.name !== "") {
     searchOptions.name = new RegExp(req.query.name, "i") // case insensitive
@@ -39,6 +40,7 @@ router.get("/", async (req, res) => {
   try {
     const players = await Player.find(searchOptions) // !!! pas de '{}' !!!
     //res.json(players)
+    console.log(res.paginatedResults)
     res.render("players/index", {
       players: players,
       searchOptions: req.query,
