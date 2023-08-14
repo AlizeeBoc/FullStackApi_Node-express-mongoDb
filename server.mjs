@@ -7,6 +7,7 @@ import expressLayouts from "express-ejs-layouts"
 import mongoose from "mongoose"
 import bodyParser from "body-parser" // to acces the element from the server
 import cors from "cors"
+//import bootstrap from 'bootstrap'
 
 
 import indexRouter from "./routes/index.mjs"
@@ -60,6 +61,7 @@ npm install cors
 npm install --save-dev @types/cors
 
 npm i ejs express-ejs-layouts
+npm install bootstrap@5.3.1
 
 
 */
