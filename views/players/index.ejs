@@ -21,17 +21,14 @@
 
 
   <div class="pagination">
-    <p>Previous Page: <%= JSON.stringify(previousPage) %></p>
-    <p>Next Page: <%= JSON.stringify(nextPage) %></p>
-    
     <% if (previousPage) { %>
-      <a href="?page=<%= previousPage.page %>&limit=<%= previousPage.limit %>" class="previous">Previous</a>
+      <button href="?page=<%= previousPage.page %>&limit=<%= previousPage.limit %>" class="previous btn btn-primary">Previous</button>
     <% } %>
   
     <% if (nextPage) { %>
-      <a href="?page=<%= nextPage.page %>&limit=<%= nextPage.limit %>" class="next">Next</a>
+      <button href="?page=<%= nextPage.page %>&limit=<%= nextPage.limit %>" class="next btn btn-primary">Next</button>
     <% } %>
-  </div>
+</div>
 
 
   <!--https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application-fr-->

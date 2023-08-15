@@ -33,6 +33,8 @@ const renderNewPage = async (res, player, hasError = false) => {
 
 // All players Route
 router.get("/", paginatedResults(Player), async (req, res) => {
+  //res.json(res.paginatedResults) // ok
+  
   let searchOptions = {}
   if (req.query.name != null && req.query.name !== "") {
     searchOptions.name = new RegExp(req.query.name, "i") // case insensitive
@@ -40,13 +42,19 @@ router.get("/", paginatedResults(Player), async (req, res) => {
   try {
     //const players = await Player.find(searchOptions) // !!! pas de '{}' !!!
     const players = res.paginatedResults.results
-    //res.json(players)
-    console.log(res.paginatedResults)
+    const previousPage = res.paginatedResults.previous; // Utilisez les informations sur la page précédente
+    const nextPage = res.paginatedResults.next;
+    //res.json(previousPage)// non ok
+    
+    if (!req.query.page) {
+      return res.redirect(`/players?page=1`);
+    }
+    
     res.render("players/index", {
       players: players,
       searchOptions: req.query,
-      previousPage: res.paginatedResults.previous, 
-      nextPage: res.paginatedResults.next,
+      previousPage: previousPage, 
+      nextPage: nextPage,
     })
   } catch {
     res.redirect("/")
