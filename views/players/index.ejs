@@ -19,16 +19,19 @@
     <div>OverallRating : <%= player.overallRating %></div>
 <% }) %>
 
-
-  <div class="pagination">
+<div class="pagination">
+    <!-- Lien "Previous" -->
     <% if (previousPage) { %>
-      <button href="?page=<%= previousPage.page %>&limit=<%= previousPage.limit %>" class="previous btn btn-primary">Previous</button>
+        <a href="?page=<%= previousPage.page %>&limit=<%= previousPage.limit %>" class="previous">Previous</a>
     <% } %>
   
+    <!-- Lien "Next" -->
     <% if (nextPage) { %>
-      <button href="?page=<%= nextPage.page %>&limit=<%= nextPage.limit %>" class="next btn btn-primary">Next</button>
+        <a href="?page=<%= nextPage.page %>&limit=<%= nextPage.limit %>" class="next">Next</a>
     <% } %>
-</div>
+  </div>
+  
+
 
 
   <!--https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application-fr-->
