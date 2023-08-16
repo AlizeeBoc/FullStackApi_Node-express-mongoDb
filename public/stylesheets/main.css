@@ -1,33 +1,48 @@
-@import 'shared/fonts.css';
-@import 'shared/variables.css';
-@import 'shared/header.css';
-@import 'shared/buttons.css';
+@import "shared/fonts.css";
+@import "shared/variables.css";
+@import "shared/header.css";
+@import "shared/buttons.css";
 
-*, *::before, *::after {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 :root {
-    font-family: 'Roboto-Black';
-    font-size : 20px;
-    color : var(--color-text-light);
+  font-family: "Roboto-Black";
+  font-size: 20px;
+  color: var(--color-text-light);
 }
 
 body {
-    background : linear-gradient(to right, var(--color-background-dark), var(--color-background-light));
+  background: linear-gradient(
+    to right,
+    var(--color-background-dark),
+    var(--color-background-light)
+  );
 }
 
 .container {
-    max-width : 1200px;
-    margin : auto;
-    margin-bottom: 3rem;
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 3rem;
 }
 .inner-container {
-    margin : 0 2rem;
+  margin: 0 2rem;
+  text-align: center;
 }
 
 /* coherence dy style des sous titres */
 .page-header {
-    font-size : 2rem;
-    font-weight : 500;
+  font-size: 2rem;
+  font-weight: 500;
 }
 
+.pagination {
+  display: flex;
+  gap: 10px;
+}
+
+.icone {
+  width: 40px;
+}

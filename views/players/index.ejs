@@ -17,19 +17,24 @@
     <div>Nationality : <%= player.nationality %></div>
     <div>Club : <%= player.club %></div>
     <div>OverallRating : <%= player.overallRating %></div>
+    <div>
+        <img src="<%= player.clubImg %>" alt="<%= player.club %>'s Club Picture" class="icone">
+    </div>
 <% }) %>
 
 <div class="pagination">
-    <!-- Lien "Previous" -->
     <% if (previousPage) { %>
-        <a href="?page=<%= previousPage.page %>&limit=<%= previousPage.limit %>" class="previous">Previous</a>
+        <form action="?page=<%= previousPage.page %>&limit=<%= previousPage.limit %>" method="GET">
+            <button type="submit" class="btn btn-primary">Previous</button>
+        </form>
     <% } %>
-  
-    <!-- Lien "Next" -->
     <% if (nextPage) { %>
-        <a href="?page=<%= nextPage.page %>&limit=<%= nextPage.limit %>" class="next">Next</a>
+        <form action="?page=<%= nextPage.page %>&limit=<%= nextPage.limit %>" method="GET">
+            <button type="submit" class="btn btn-primary">Next</button>
+        </form>
     <% } %>
-  </div>
+</div>
+
   
 
 
