@@ -23,11 +23,21 @@ body {
 }
 .inner-container {
     margin : 0 2rem;
+    text-align: center;
 }
 
 /* coherence dy style des sous titres */
 .page-header {
     font-size : 2rem;
     font-weight : 500;
+}
+
+.pagination {
+  display: flex;
+  gap: 10px;
+}
+
+.icone {
+  width: 40px;
 }
 
