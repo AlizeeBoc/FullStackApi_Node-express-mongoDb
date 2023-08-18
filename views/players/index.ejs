@@ -23,15 +23,14 @@
 <% }) %>
 
 <div class="pagination">
+    <!-- Lien "Previous" -->
     <% if (previousPage) { %>
-        <form action="?page=<%= previousPage.page %>&limit=<%= previousPage.limit %>" method="GET">
-            <button type="submit" class="btn btn-primary">Previous</button>
-        </form>
+        <a href="?page=<%= previousPage.page %>&limit=<%= previousPage.limit %>" class="previous">Previous</a>
     <% } %>
+  
+    <!-- Lien "Next" -->
     <% if (nextPage) { %>
-        <form action="?page=<%= nextPage.page %>&limit=<%= nextPage.limit %>" method="GET">
-            <button type="submit" class="btn btn-primary">Next</button>
-        </form>
+        <a href="?page=<%= nextPage.page %>&limit=<%= nextPage.limit %>" class="next">Next</a>
     <% } %>
   </div>
 
