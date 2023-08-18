@@ -1,4 +1,4 @@
-// retourne une fonction avec next pour bien s'executer comme middleware
+// sera utilisé comme middleware donc nécéssité de retourner 1) une fonction 2) + next.
 export const paginatedResults = (model) => {
     return async (req, res, next) => {
       const page = parseInt(req.query.page)  // !! parsInt sinon strings
@@ -6,7 +6,7 @@ export const paginatedResults = (model) => {
     const limit = 10
   
       const startIndex = (page - 1) * limit
-      const endIndex = page * limit  // puisque exclu dans slice()
+      const endIndex = page * limit 
   
       const results = {}
   
@@ -25,7 +25,6 @@ export const paginatedResults = (model) => {
       }
       
       try {
-        // objet results contenant lui-même un objet results contenant le tableau d'objets "player" 
         results.results = await model.find().limit(limit).skip(startIndex).exec()
         res.paginatedResults = results
         //console.log(res.paginatedResults)
@@ -37,5 +36,5 @@ export const paginatedResults = (model) => {
     }
   }
 
-  // https://www.youtube.com/watch?v=ZX3qt0UWifc
+
   

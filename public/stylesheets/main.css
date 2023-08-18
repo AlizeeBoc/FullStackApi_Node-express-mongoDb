@@ -32,20 +32,20 @@ body {
     text-align: center;
 }
 
-/* coherence dy style des sous titres */
+/* coherence style des sous titres */
 .page-header {
   font-size: 2rem;
   font-weight: 500;
 }
 
-.pagination > .next, .previous {
+.cancel, .pagination > .next, .previous {
     text-decoration: none;
     color : var(--color-text-light);
     font-weight : var(--nav-title-font-weight);
     padding : 1rem;
 }
 
-.pagination a:hover {
+.cancel, .pagination a:hover {
   color : white;
 }
 

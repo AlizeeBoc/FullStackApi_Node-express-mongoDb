@@ -1,7 +1,7 @@
 //5.
 
 import mongoose from "mongoose";
-//export const profilePictureBasePath = "uploads/playersPictures" //inside public folder
+//export const profilePictureBasePath = "uploads/playersPictures" //inside public folder => utilisé si les pictures sont stockées en local pour être injectées à la db
 
 const playersSchema = new mongoose.Schema({
     playerId: {

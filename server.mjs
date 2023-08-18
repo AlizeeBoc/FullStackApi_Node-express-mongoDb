@@ -7,8 +7,6 @@ import expressLayouts from "express-ejs-layouts"
 import mongoose from "mongoose"
 import bodyParser from "body-parser" // to acces the element from the server
 import cors from "cors"
-//import bootstrap from 'bootstrap'
-
 
 import indexRouter from "./routes/index.mjs"
 import playerRouter from "./routes/players.mjs"
@@ -22,7 +20,6 @@ app.use(express.static("public"))
 ////Middlewares
 app.use(cors())
 app.use(express.json())
-//app.use(bodyParser.json()) // plus facile pour les requetes post
 app.use(bodyParser.urlencoded({ limit : '10mb', extended : false }))
 
 app.use("/", indexRouter)
@@ -61,14 +58,13 @@ npm install cors
 npm install --save-dev @types/cors
 
 npm i ejs express-ejs-layouts
-npm install bootstrap@5.3.1
-
 
 */
 
 ////////////////: BIBLIO ////////////////////
 // BACKEND : https://www.youtube.com/watch?v=vjf774RKrLc
 // FRONT : https://www.youtube.com/watch?v=qj2oDkvc4dQ&list=PLZlA0Gpn_vH8jbFkBjOuFjhxANC63OmXM&index=5
+// PAGINATION :   // https://www.youtube.com/watch?v=ZX3qt0UWifc
 
 ////////////////////////////////////////////
 // __dirname in ECMAS : https://stackabuse.com/bytes/fix-dirname-is-not-defined-in-es-module-scope-in-javascript-node/

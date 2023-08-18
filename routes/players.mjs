@@ -4,18 +4,8 @@
 import express from "express"
 const router = express()
 import { paginatedResults } from "../middleware/paginate.mjs"
-//import multer from "multer"
-//import path from "path"
-//import { profilePictureBasePath } from "../models/Player.mjs"
 import Player from "../models/Player.mjs"
-//const uploadPath = path.join('public', profilePictureBasePath)
-//const imageMimeTypes = ['images/jpeg', 'images/png', 'images/gif']
-//const upload = multer({
-//    dest: uploadPath,
-//    fileFilter: (req, file, callback) => {
-//        callback(null, imageMimeTypes.includes(file.mimetype) )
-//    }
-//})
+
 
 const renderNewPage = async (res, player, hasError = false) => {
   try {
@@ -31,9 +21,8 @@ const renderNewPage = async (res, player, hasError = false) => {
   }
 }
 
-
+// GET player and GET players Route
 router.get("/", paginatedResults(Player), async (req, res) => {
-  //res.json(res.paginatedResults) // ok
   
   const currentPage = parseInt(req.query.page) || 1; 
   const currentPageUrl = `${req.baseUrl}?page=${currentPage}`;
@@ -50,11 +39,9 @@ router.get("/", paginatedResults(Player), async (req, res) => {
         searchOptions: req.query,
       })
     } else {
-      //const players = await Player.find(searchOptions) // !!! pas de '{}' !!!
     const players = res.paginatedResults.results
     const previousPage = res.paginatedResults.previous; 
     const nextPage = res.paginatedResults.next;
-    //res.json(previousPage)// ok
     
     if (!req.query.page) {
       return res.redirect(`/players?page=1`);
@@ -69,19 +56,17 @@ router.get("/", paginatedResults(Player), async (req, res) => {
     })
     }
   } catch (err) {
-    console.log('error')
-    //res.redirect("/")
+    res.redirect("/")
   }
 })
 
 
-
-// New player Route
+// GET New player Route
 router.get("/new", (req, res) => {
   renderNewPage(res, new Player())
 })
 
-// POST => create a new player Route
+// POST => create New player Route
 //router.post('/', upload.single('profilePicture'), async (req, res) => {
 router.post("/", async (req, res) => {
 //  const fileName = req.file != null ? req.file.filename : null
@@ -96,7 +81,7 @@ router.post("/", async (req, res) => {
   })
   try {
     const newPlayer = await player.save()
-    //res.redirect(`players/$(newPlayer.id)`)
+    //res.redirect(`players/$(newPlayer.id)`)  => a créer si possible
     res.redirect("players")
     console.log("A new player has been created!")
   } catch (err) {
@@ -105,63 +90,50 @@ router.post("/", async (req, res) => {
 })
 
 export default router
-//////////////////////////////////////////////////////////////////////////
 
-//// Get player by id Route // ok json
-//router.get("/:id", async (req, res) => {
-//    const playerId = req.params.id
-//    try {
-//        const player = await Player.find({playerId : playerId})
-//        res.json(player)
-//        //res.render("players/player")
-//    } catch (err) {
-//        res.json ({ message : err})
-//    }
+
+
+//////////////////////////////////////// A ajouter un jour //////////////////////////////////
+
+
+//// DELETE => delete a specific player
+//router.delete("/:id", async (req, res) => {
+//  const playerId = req.params.id
+//  console.log(playerId)
+//  try {
+//    const removedPlayer = await Player.deleteOne({ playerId: playerId })
+//    res.json(removedPlayer)
+//  } catch (err) {
+//    res.json({ message: err })
+//  }
 //})
 
-//// POST => create a new player Route
-//router.post('/', async (req, res) => {
-//    const player = new Player({
-//        //playerId : req.body.playerId,
-//        name : req.body.name,
-//        //nationality : req.body.nationality,
-//        //club : req.body.club,
-//        //overallRating : req.body.overallRating
-//    })
-//    try {
-//        //const playerSaved = await player.save()
-//        //res.json(playerSaved)
-//        res.send(req.body.name)
-//        console.log('A new player has been created!');
-//    } catch (err) {
-//        res.json({ message : err})
-//    }
+//// UPDATE => update a specific player
+
+//router.patch("/:id", async (req, res) => {
+//  const playerId = req.params.id
+//  const newName = req.body.name
+//  try {
+//    const updatedPlayer = await Player.updateOne(
+//      { playerId: playerId },
+//      { $set: { name: newName } }
+//    )
+//    res.json(updatedPlayer)
+//  } catch (err) {
+//    res.json({ message: err })
+//  }
 //})
 
-// DELETE => delete a specific player
-router.delete("/:id", async (req, res) => {
-  const playerId = req.params.id
-  console.log(playerId)
-  try {
-    const removedPlayer = await Player.deleteOne({ playerId: playerId })
-    res.json(removedPlayer)
-  } catch (err) {
-    res.json({ message: err })
-  }
-})
 
-// UPDATE => update a specific player
-
-router.patch("/:id", async (req, res) => {
-  const playerId = req.params.id
-  const newName = req.body.name
-  try {
-    const updatedPlayer = await Player.updateOne(
-      { playerId: playerId },
-      { $set: { name: newName } }
-    )
-    res.json(updatedPlayer)
-  } catch (err) {
-    res.json({ message: err })
-  }
-})
+//////////////////////// Imports utiles si les pic sont en local et doivent être injectés a la db /////////////////////////////////
+//import multer from "multer"
+//import path from "path"
+//import { profilePictureBasePath } from "../models/Player.mjs"
+//const uploadPath = path.join('public', profilePictureBasePath)
+//const imageMimeTypes = ['images/jpeg', 'images/png', 'images/gif']
+//const upload = multer({
+//    dest: uploadPath,
+//    fileFilter: (req, file, callback) => {
+//        callback(null, imageMimeTypes.includes(file.mimetype) )
+//    }
+//})
