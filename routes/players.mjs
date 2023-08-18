@@ -40,10 +40,19 @@ router.get("/", paginatedResults(Player), async (req, res) => {
   console.log(currentPageUrl);
 
   let searchOptions = {}
-  if (req.query.name != null && req.query.name !== "") {
-    searchOptions.name = new RegExp(req.query.name, "i") // case insensitive
-  }
+  
   try {
+    if (req.query.name != null && req.query.name !== "") {
+      searchOptions.name = new RegExp(req.query.name, "i") // case insensitive
+       const players = await Player.find(searchOptions) // !!! pas de '{}' !!!
+       res.render("players/players", {
+        players: players,
+        searchOptions: req.query,
+      })
+    } else {
+      console.log("error");
+    }
+
     //const players = await Player.find(searchOptions) // !!! pas de '{}' !!!
     const players = res.paginatedResults.results
     const previousPage = res.paginatedResults.previous; 

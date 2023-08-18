@@ -27,7 +27,11 @@ const playersSchema = new mongoose.Schema({
     playerImg : {
       type : String,
       //required : true
-    }
+    },
+    clubImg : {
+      type : String,
+      //required : true
+    },
   })
   
   const Player = mongoose.model("players", playersSchema)

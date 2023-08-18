@@ -17,6 +17,9 @@
     <div>Nationality : <%= player.nationality %></div>
     <div>Club : <%= player.club %></div>
     <div>OverallRating : <%= player.overallRating %></div>
+    <div>
+        <img src="<%= player.clubImg %>" alt="<%= player.club %>'s Club Picture" class="icone">
+    </div>
 <% }) %>
 
 <div class="pagination">
@@ -30,8 +33,6 @@
         <a href="?page=<%= nextPage.page %>&limit=<%= nextPage.limit %>" class="next">Next</a>
     <% } %>
   </div>
-  
-
 
 
   <!--https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application-fr-->
