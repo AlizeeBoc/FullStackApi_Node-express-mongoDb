@@ -68,8 +68,9 @@ router.get("/", paginatedResults(Player), async (req, res) => {
       currentPageUrl: currentPageUrl,
     })
     }
-  } catch {
-    res.redirect("/")
+  } catch (err) {
+    console.log('error')
+    //res.redirect("/")
   }
 })
 
