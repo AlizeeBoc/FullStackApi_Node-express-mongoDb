@@ -28,8 +28,8 @@ body {
   margin-bottom: 3rem;
 }
 .inner-container {
-  margin: 0 2rem;
-  text-align: center;
+    margin : 0 2rem;
+    text-align: center;
 }
 
 /* coherence dy style des sous titres */
@@ -41,6 +41,15 @@ body {
 .pagination {
   display: flex;
   gap: 10px;
+}
+
+.pagination {
+  display: flex;
+  gap: 10px;
+}
+
+.icone {
+  width: 40px;
 }
 
 .icone {

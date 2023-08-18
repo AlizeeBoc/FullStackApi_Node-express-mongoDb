@@ -31,7 +31,7 @@ const renderNewPage = async (res, player, hasError = false) => {
   }
 }
 
-// All players Route
+
 router.get("/", paginatedResults(Player), async (req, res) => {
   //res.json(res.paginatedResults) // ok
   
@@ -40,11 +40,17 @@ router.get("/", paginatedResults(Player), async (req, res) => {
   console.log(currentPageUrl);
 
   let searchOptions = {}
-  if (req.query.name != null && req.query.name !== "") {
-    searchOptions.name = new RegExp(req.query.name, "i") // case insensitive
-  }
+  
   try {
-    //const players = await Player.find(searchOptions) // !!! pas de '{}' !!!
+    if (req.query.name != null && req.query.name !== "") {
+      searchOptions.name = new RegExp(req.query.name, "i") // case insensitive
+       const players = await Player.find(searchOptions) // !!! pas de '{}' !!!
+       res.render("players/player", {
+        players: players,
+        searchOptions: req.query,
+      })
+    } else {
+      //const players = await Player.find(searchOptions) // !!! pas de '{}' !!!
     const players = res.paginatedResults.results
     const previousPage = res.paginatedResults.previous; 
     const nextPage = res.paginatedResults.next;
@@ -61,10 +67,13 @@ router.get("/", paginatedResults(Player), async (req, res) => {
       nextPage: nextPage,
       currentPageUrl: currentPageUrl,
     })
+    }
   } catch {
     res.redirect("/")
   }
 })
+
+
 
 // New player Route
 router.get("/new", (req, res) => {
