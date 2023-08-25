@@ -2,10 +2,14 @@
   "name": "testapidb",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "18.16.x",
+    "npm": "9.5.x"
+   },
   "main": "server.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.mjs",
+    "start": "nodemon server.mjs",
     "dev": "nodemon server.mjs"
   },
   "keywords": [],
