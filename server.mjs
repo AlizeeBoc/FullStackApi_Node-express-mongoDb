@@ -13,7 +13,7 @@ import cors from "cors"
 import indexRouter from "./routes/index.mjs"
 import playerRouter from "./routes/players.mjs"
 
-const PORT = process.env.PORT || 5000
+const port = process.env.PORT || 5000
 
 app.set('view engine', 'ejs')
 app.set("views", "/home/alizee/testApiDb" + "/views")
@@ -48,7 +48,9 @@ mongoose
   })
 
 // 1. Create a server
-app.listen(PORT, () => console.log(`Listen on port ${PORT}`))
+app.listen(port, () => {
+  console.log(`Listen on port ${port}`)
+})
 
 /*
 
