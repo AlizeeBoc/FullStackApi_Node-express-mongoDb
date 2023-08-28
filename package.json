@@ -6,11 +6,11 @@
     "node": "18.16.x",
     "npm": "9.5.x"
   },
-  "main": "server.mjs",
+  "main": "index.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.mjs",
-    "dev": "nodemon server.mjs"
+    "start": "node index.mjs",
+    "dev": "nodemon index.mjs"
   },
   "keywords": [],
   "author": "",
