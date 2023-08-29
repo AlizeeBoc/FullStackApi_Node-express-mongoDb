@@ -1,6 +1,8 @@
 import express from "express"
 const app = express()
-
+//if (process.env.NODE_ENV !== "production") {
+//  import("dotenv").then(dotenv => dotenv.config());
+//}
 import dotenv from "dotenv"
 dotenv.config()
 import expressLayouts from "express-ejs-layouts"
@@ -10,6 +12,8 @@ import cors from "cors"
 
 import indexRouter from "./routes/index.mjs"
 import playerRouter from "./routes/players.mjs"
+
+const port = process.env.PORT || 5000
 
 app.set('view engine', 'ejs')
 app.set("views", "/home/alizee/testApiDb" + "/views")
@@ -44,7 +48,9 @@ mongoose
   })
 
 // 1. Create a server
-app.listen(process.env.PORT || 3000)
+app.listen(port, () => {
+  console.log(`Listen on port ${port}`)
+})
 
 /*
 
